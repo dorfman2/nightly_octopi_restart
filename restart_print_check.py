@@ -2,7 +2,7 @@
 import subprocess
 import json
 import time
-from config import myConfig
+from config import Config
 
 def query_status(API=Config.X_API_KEY, IP=Config.IP_ADDRESS):
     proc = subprocess.Popen(["curl", "-s", "-H", "Content-Type: application/json", "-H", f"X-Api-Key: {API}", f"http://{IP}/api/printer"], stdout=subprocess.PIPE)
@@ -31,5 +31,5 @@ if printer_status == b"Printer is not operational":
 state = json.loads(printer_status)["state"]["flags"]
 
 if not state["printing"] and state["ready"]:
-    # subprocess.run(["sudo", "reboot", "now"])
+    subprocess.run(["sudo", "reboot", "now"])
     print("  Restarted Pi at", time.strftime("%c"))
