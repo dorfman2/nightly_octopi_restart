@@ -27,7 +27,10 @@ chmod +x restart_print_check.py
 
   1. Type `sudo crontab -e` and press enter.
   2. If this is your first time editing crontab, select option '1.' 
-  3. Add `0 2 * * * /home/pi/nightly_octopi_restart/restart_print_check.py >> /home/pi/nightly_octopi_restart/restart_cron.log 2>&1` to the end of the file. By default it runs at 2 am.
+  3. Add this line to the end of the file. By default it runs at 2 am.
+```
+0 2 * * * /home/pi/nightly_octopi_restart/restart_print_check.py >> /home/pi/nightly_octopi_restart/restart_cron.log 2>&1
+```
   4. Press CTRL S and then CTRL X.
 
 ## Changing the time it runs at
@@ -40,6 +43,9 @@ I find [this tool](https://crontab.guru/) to be incredibly useful for helping to
 
 ### Testing that your script can be run by crontab.
 - Type into terminal `env -i /bin/bash --noprofile --norc` and press enter.
-- Then type `/home/pi/nightly_octopi_restart/restart_print_check.py` and press enter.
+- Then paste this and press enter.
+```
+/home/pi/nightly_octopi_restart/restart_print_check.py >> /home/pi/nightly_octopi_restart/restart_cron.log 2>&1
+```
 - If the Pi restarts, your script has correct permissions and is in the correct location.
-- If not, check the logs.
+- If not, check `restart_cron.log`.
