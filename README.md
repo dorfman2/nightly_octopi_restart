@@ -7,7 +7,8 @@ This script is for scheduling server restarts on 3D printers running OctoPrint o
 
 1. Clone the script to your pi
 ```
-git clone 
+cd /home/pi/
+git clone https://github.com/dorfman2/nightly_octopi_restart.git
 ```
 
 2. Navigate inside the folder
@@ -15,7 +16,7 @@ git clone
 cd nightly_octopi_restart/
 ```
 
-3. Fill in your API key and IP address into the config.py file.
+3. Using an editor of your choice, fill in your API key and IP address into the config.py file.
 
 
 4. Make the script executable 
